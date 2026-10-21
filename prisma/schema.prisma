@@ -1,0 +1,15 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Jamur {
+  id         Int    @id @default(autoincrement())
+  nama_jamur String
+  fase_awal  String
+  hari_awal  Int
+}
