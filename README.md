@@ -1,40 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Tiramitech - Smart Mushroom Farming IoT Prototype
 
-## Getting Started
+**Tiramitech** adalah sistem pemantauan dan kontrol suhu berbasis Internet of Things (IoT) untuk budidaya jamur tiram. Sistem ini mengintegrasikan sensor hardware (ESP8266 via Tasmota Firmware dan dht22), API/Middleware Node-RED, database MySQL, dan Dashboard Web berbasis Next.js & javascript.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Tujuan & Cara Kerja Alat
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Alat ini bertujuan untuk **menjaga kestabilan pertumbuhan jamur tiram pada suhu rentang 22–28°C** dan **kelembapan stabil pada rentang 70–90%**. Sistem ini membantu petani mengontrol dan memantau kumbung jamur secara otomatis melalui website, serta melakukan perawatan jamur tiram secara jarak jauh.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Logika Kontrol Otomatis:
+- **Suhu Tinggi (> 28°C):** Sistem otomatis menyalakan **kipas** dan **pompa air** untuk menurunkan suhu dan meningkatkan kelembapan.
+- **Suhu Rendah (< 22°C):** Sistem otomatis menyalakan **lampu penghangat** untuk menaikkan suhu kembali ke kondisi ideal.
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+---
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## Dokumentasi & Logika Sistem (Dari Laporan Akhir)
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+> *Catatan: Perangkat keras dan servis Node-RED saat ini dalam status offline (prototipe telah selesai). Berikut adalah dokumentasi alur sistem dan logika program yang diimplementasikan.*
 
-## Learn More
+### 1. Dashboard Web Monitoring (Next.js)
+Tampilan antarmuka utama untuk memantau data suhu, kelembaban, dan status aktuator secara real-time.
+![Dashboard Web](docs/dashboard-png/Screenshot%202026-02-20%20133436.png)
 
-To learn more about Next.js, take a look at the following resources:
+### 2. Node-RED Flow & Middleware Logic
+Alur data dari sensor Tasmota via MQTT yang diolah menggunakan custom JavaScript function node sebelum disimpan ke database MySQL.
+![Node-RED Flow](docs/nodered-png/Screenshot%202026-02-20%20133650.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+### 3. Skema Hardware & Tasmota
+Rangkaian mikrokontroler ESP8266 dan konfigurasi firmware Tasmota.
+![Hardware Tasmota](docs/tasmota-alat-png/Screenshot%202026-02-20%20133912.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Tech Stack & Arsitektur
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Frontend:** Next.js, React, Tailwind CSS
+- **Database & ORM:** MySQL (XAMPP), Prisma ORM
+- **IoT & Middleware:** ESP8266 (Tasmota), Node-RED, MQTT Broker
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+---
+
+## Fitur Utama
+- [x] Monitoring Suhu & Kelembaban kumbung jamur secara real-time.
+- [x] Otomatisasi kontrol Kipas, Pompa, dan Lampu Penghangat berdasarkan kondisi suhu.
+- [x] Pencatatan riwayat data sensor ke database MySQL.
+- [x] Antarmuka web responsif berbasis Next.js.
+
+---
+
+## 💻 Cara Menjalankan Secara Lokal (Development)
+
+1. **Clone repository ini:**
+   ```bash
+   git clone [https://github.com/salsabilaazzz/tiramitech-iot-app.git](https://github.com/salsabilaazzz/tiramitech-iot-app.git)
+   cd tiramitech
+   npm install
+   DATABASE_URL="mysql://root:@localhost:3306/tiramitech.sql"
+   npm run dev
+   buka pada http://localhost:3000
+
+
+
