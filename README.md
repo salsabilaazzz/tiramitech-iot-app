@@ -20,11 +20,11 @@ Alat ini bertujuan untuk **menjaga kestabilan pertumbuhan jamur tiram pada suhu 
 
 ### 1. Dashboard Web Monitoring (Next.js)
 Tampilan antarmuka utama untuk memantau data suhu, kelembaban, dan status aktuator secara real-time.
-![Dashboard Web](docs/dashboard-png/Screenshot%202026-02-20%20133436.png)
+![Dashboard Web](docs/dashboard-png/Screenshot%202026-03-12%20061620.png)
 
 ### 2. Node-RED Flow & Middleware Logic
 Alur data dari sensor Tasmota via MQTT yang diolah menggunakan custom JavaScript function node sebelum disimpan ke database MySQL.
-![Node-RED Flow](docs/nodered-png/Screenshot%202026-02-20%20133650.png)
+![Node-RED Flow](docs/nodered-png/Screenshot%202026-02-20%20120702.png)
 
 ### 3. Skema Hardware & Tasmota
 Rangkaian mikrokontroler ESP8266 dan konfigurasi firmware Tasmota.
@@ -48,7 +48,7 @@ Rangkaian mikrokontroler ESP8266 dan konfigurasi firmware Tasmota.
 
 ---
 
-## 💻 Cara Menjalankan Secara Lokal (Development)
+## Cara Menjalankan Secara Lokal (Development)
 
 1. **Clone repository ini:**
    ```bash
